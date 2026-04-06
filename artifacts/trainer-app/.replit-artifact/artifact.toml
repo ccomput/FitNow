@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/"
+title = "FitNow - Personal Trainer"
+version = "1.0.0"
+id = "artifacts/trainer-app"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/" ]
+localPort = 21575
+
+[services.development]
+run = "pnpm --filter @workspace/trainer-app run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/trainer-app", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/trainer-app", "run", "serve" ]
+
+[services.env]
+PORT = "21575"
+BASE_PATH = "/"

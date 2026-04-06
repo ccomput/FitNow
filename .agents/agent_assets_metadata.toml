@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "GR0QkhCh6ZlK3d9thYTJQ"
+uri = "file://artifacts/trainer-app/assets/images/icon.png"
+type = "image"
+title = "trainer app icon"
+
+[[generated]]
+id = "08M9gGi9ey9fEge7HTgYQ"
+uri = "file://artifacts/trainer-app/assets/images/trainer1.png"
+type = "image"
+title = "personal trainer portrait"
+
+[[generated]]
+id = "OFkl_MzVZIRv9CL06fjIT"
+uri = "file://artifacts/trainer-app/assets/images/trainer2.png"
+type = "image"
+title = "female personal trainer"
+
+[[generated]]
+id = "kBKfm4x3mgyb7A7hjrPS1"
+uri = "file://artifacts/trainer-app/assets/images/trainer3.png"
+type = "image"
+title = "male personal trainer 2"

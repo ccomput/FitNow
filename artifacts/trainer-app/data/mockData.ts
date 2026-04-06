@@ -1,0 +1,386 @@
+export interface Gym {
+  id: string;
+  name: string;
+  address: string;
+  lat: number;
+  lng: number;
+  availableTrainers: number;
+  rating: number;
+  distance: string;
+  amenities: string[];
+}
+
+export interface Trainer {
+  id: string;
+  gymId: string;
+  name: string;
+  specialty: string[];
+  rating: number;
+  reviewCount: number;
+  pricePerHour: number;
+  bio: string;
+  experience: number;
+  availableSlots: string[];
+  imageKey: "trainer1" | "trainer2" | "trainer3";
+  certifications: string[];
+  totalClients: number;
+}
+
+export interface Booking {
+  id: string;
+  trainerId: string;
+  trainerName: string;
+  gymName: string;
+  gymAddress: string;
+  date: string;
+  time: string;
+  type: string;
+  price: number;
+  status: "confirmed" | "pending" | "completed" | "cancelled";
+  imageKey: "trainer1" | "trainer2" | "trainer3";
+}
+
+export const GYMS: Gym[] = [
+  {
+    id: "gym1",
+    name: "SmartFit Centro",
+    address: "Av. Paulista, 1374 - Bela Vista",
+    lat: -23.5618,
+    lng: -46.6565,
+    availableTrainers: 4,
+    rating: 4.8,
+    distance: "0.3 km",
+    amenities: ["Musculação", "Cardio", "Funcional", "Piscina"],
+  },
+  {
+    id: "gym2",
+    name: "Academia Bodytech",
+    address: "R. Haddock Lobo, 595 - Jardins",
+    lat: -23.5558,
+    lng: -46.6648,
+    availableTrainers: 2,
+    rating: 4.6,
+    distance: "0.8 km",
+    amenities: ["Musculação", "Spinning", "Yoga"],
+  },
+  {
+    id: "gym3",
+    name: "Bio Ritmo Paulista",
+    address: "Av. Brigadeiro Luís Antônio, 2391",
+    lat: -23.5696,
+    lng: -46.6512,
+    availableTrainers: 6,
+    rating: 4.9,
+    distance: "1.2 km",
+    amenities: ["Crossfit", "Musculação", "Cardio", "Sauna"],
+  },
+  {
+    id: "gym4",
+    name: "FitPass Consolação",
+    address: "R. da Consolação, 2987 - Jardins",
+    lat: -23.5529,
+    lng: -46.6702,
+    availableTrainers: 3,
+    rating: 4.5,
+    distance: "1.5 km",
+    amenities: ["Funcional", "Musculação"],
+  },
+  {
+    id: "gym5",
+    name: "Academia Competition",
+    address: "Rua Oscar Freire, 890 - Pinheiros",
+    lat: -23.5648,
+    lng: -46.6798,
+    availableTrainers: 5,
+    rating: 4.7,
+    distance: "2.1 km",
+    amenities: ["Musculação", "Lutas", "Cardio", "Funcional"],
+  },
+];
+
+export const TRAINERS: Trainer[] = [
+  {
+    id: "t1",
+    gymId: "gym1",
+    name: "Carlos Mendes",
+    specialty: ["Hipertrofia", "Emagrecimento", "Funcional"],
+    rating: 4.9,
+    reviewCount: 127,
+    pricePerHour: 180,
+    bio: "Especialista em transformação corporal com 8 anos de experiência. Formado em Educação Física pela USP, com especialização em Fisiologia do Exercício. Já ajudou mais de 500 alunos a atingirem seus objetivos.",
+    experience: 8,
+    availableSlots: ["07:00", "08:00", "09:00", "15:00", "16:00", "17:00"],
+    imageKey: "trainer1",
+    certifications: ["CREF", "CrossFit L2", "Nutrição Esportiva"],
+    totalClients: 524,
+  },
+  {
+    id: "t2",
+    gymId: "gym1",
+    name: "Ana Paula Costa",
+    specialty: ["Yoga", "Pilates", "Flexibilidade"],
+    rating: 4.8,
+    reviewCount: 89,
+    pricePerHour: 160,
+    bio: "Personal trainer especializada em corpo e mente. Formada em Educação Física e certificada em Yoga e Pilates. Minha abordagem é holística, focando na saúde integral do aluno.",
+    experience: 5,
+    availableSlots: ["06:00", "07:00", "10:00", "11:00", "18:00", "19:00"],
+    imageKey: "trainer2",
+    certifications: ["CREF", "Yoga Alliance RYT-200", "Pilates Mat & Studio"],
+    totalClients: 312,
+  },
+  {
+    id: "t3",
+    gymId: "gym1",
+    name: "Rafael Torres",
+    specialty: ["CrossFit", "HIIT", "Condicionamento"],
+    rating: 4.7,
+    reviewCount: 64,
+    pricePerHour: 150,
+    bio: "Atleta de CrossFit e personal trainer apaixonado por performance. Treino alunos de todos os níveis, do iniciante ao atleta competitivo.",
+    experience: 4,
+    availableSlots: ["05:30", "06:00", "07:00", "19:00", "20:00", "21:00"],
+    imageKey: "trainer3",
+    certifications: ["CREF", "CrossFit L1", "Kettlebell"],
+    totalClients: 198,
+  },
+  {
+    id: "t4",
+    gymId: "gym1",
+    name: "Marcos Oliveira",
+    specialty: ["Emagrecimento", "Musculação", "Reabilitação"],
+    rating: 4.6,
+    reviewCount: 43,
+    pricePerHour: 140,
+    bio: "Personal trainer com foco em resultados sustentáveis. Especializdo em reabilitação e retorno ao exercício após lesões.",
+    experience: 6,
+    availableSlots: ["08:00", "09:00", "10:00", "14:00", "15:00"],
+    imageKey: "trainer1",
+    certifications: ["CREF", "Reabilitação Esportiva"],
+    totalClients: 267,
+  },
+  {
+    id: "t5",
+    gymId: "gym2",
+    name: "Juliana Ferreira",
+    specialty: ["Spinning", "Cardio", "Emagrecimento"],
+    rating: 4.9,
+    reviewCount: 156,
+    pricePerHour: 170,
+    bio: "Mestra em Educação Física, especialista em treinamento cardiovascular e emagrecimento. Método próprio de treino intervalado de alta intensidade.",
+    experience: 10,
+    availableSlots: ["06:00", "07:00", "08:00", "17:00", "18:00", "19:00"],
+    imageKey: "trainer2",
+    certifications: ["CREF", "Nutrição Esportiva", "Spinning Master"],
+    totalClients: 678,
+  },
+  {
+    id: "t6",
+    gymId: "gym2",
+    name: "Bruno Alves",
+    specialty: ["Musculação", "Powerlifting", "Força"],
+    rating: 4.7,
+    reviewCount: 78,
+    pricePerHour: 155,
+    bio: "Campeão estadual de powerlifting e personal trainer especializado em desenvolvimento de força e hipertrofia muscular.",
+    experience: 7,
+    availableSlots: ["09:00", "10:00", "11:00", "20:00", "21:00"],
+    imageKey: "trainer3",
+    certifications: ["CREF", "NSCA-CPT"],
+    totalClients: 345,
+  },
+  {
+    id: "t7",
+    gymId: "gym3",
+    name: "Fernanda Lima",
+    specialty: ["CrossFit", "Funcional", "Olimpíadas"],
+    rating: 5.0,
+    reviewCount: 203,
+    pricePerHour: 220,
+    bio: "Ex-atleta olímpica e top coach de CrossFit no Brasil. Treina atletas de elite e entusiastas que buscam o melhor de si mesmos.",
+    experience: 12,
+    availableSlots: ["05:00", "06:00", "07:00", "18:00", "19:00", "20:00"],
+    imageKey: "trainer2",
+    certifications: ["CREF", "CrossFit L3", "Olympic Weightlifting"],
+    totalClients: 891,
+  },
+  {
+    id: "t8",
+    gymId: "gym3",
+    name: "Diego Santos",
+    specialty: ["Bodybuilding", "Hipertrofia", "Definição"],
+    rating: 4.8,
+    reviewCount: 134,
+    pricePerHour: 190,
+    bio: "IFBB Pro e personal trainer especializado em bodybuilding natural. Meu objetivo é ajudar cada aluno a construir o físico dos seus sonhos de forma segura e eficiente.",
+    experience: 9,
+    availableSlots: ["07:00", "08:00", "09:00", "16:00", "17:00", "18:00"],
+    imageKey: "trainer1",
+    certifications: ["CREF", "IFBB Pro", "Nutrição Esportiva Avançada"],
+    totalClients: 456,
+  },
+  {
+    id: "t9",
+    gymId: "gym3",
+    name: "Camila Rodrigues",
+    specialty: ["Yoga", "Meditação", "Mindfulness"],
+    rating: 4.9,
+    reviewCount: 112,
+    pricePerHour: 165,
+    bio: "Professora de Yoga com formação na Índia. Ofereço uma jornada de autoconhecimento através do movimento, respiração e meditação.",
+    experience: 8,
+    availableSlots: ["06:00", "07:00", "10:00", "11:00", "17:00"],
+    imageKey: "trainer2",
+    certifications: ["CREF", "Yoga Alliance E-RYT 500", "Meditação Mindfulness"],
+    totalClients: 389,
+  },
+  {
+    id: "t10",
+    gymId: "gym4",
+    name: "André Costa",
+    specialty: ["Funcional", "Mobilidade", "Emagrecimento"],
+    rating: 4.6,
+    reviewCount: 67,
+    pricePerHour: 145,
+    bio: "Personal trainer focado em movimento funcional e qualidade de vida. Trabalho com alunos de todas as idades e condicionamentos.",
+    experience: 5,
+    availableSlots: ["07:00", "08:00", "09:00", "14:00", "15:00", "16:00"],
+    imageKey: "trainer3",
+    certifications: ["CREF", "Functional Training", "Mobilidade e Flexibilidade"],
+    totalClients: 234,
+  },
+  {
+    id: "t11",
+    gymId: "gym4",
+    name: "Patrícia Nunes",
+    specialty: ["Pilates", "Reabilitação", "Gestantes"],
+    rating: 4.8,
+    reviewCount: 95,
+    pricePerHour: 175,
+    bio: "Especialista em Pilates e reabilitação pós-parto. Atendo gestantes, puérperas e pessoas em processo de reabilitação.",
+    experience: 7,
+    availableSlots: ["09:00", "10:00", "11:00", "14:00", "15:00"],
+    imageKey: "trainer2",
+    certifications: ["CREF", "Pilates Clínico", "Reeducação Postural"],
+    totalClients: 412,
+  },
+  {
+    id: "t12",
+    gymId: "gym4",
+    name: "Lucas Meira",
+    specialty: ["Musculação", "Suplementação", "Performance"],
+    rating: 4.5,
+    reviewCount: 52,
+    pricePerHour: 135,
+    bio: "Personal trainer jovem e dinâmico, especializado em ganho de massa muscular e performance esportiva.",
+    experience: 3,
+    availableSlots: ["06:00", "07:00", "17:00", "18:00", "19:00", "20:00"],
+    imageKey: "trainer3",
+    certifications: ["CREF", "Nutrição Esportiva Básica"],
+    totalClients: 145,
+  },
+  {
+    id: "t13",
+    gymId: "gym5",
+    name: "Renata Souza",
+    specialty: ["Lutas", "Defesa Pessoal", "Condicionamento"],
+    rating: 4.8,
+    reviewCount: 88,
+    pricePerHour: 160,
+    bio: "Faixa preta em Jiu-Jitsu e personal trainer especializada em artes marciais e condicionamento para lutadores.",
+    experience: 6,
+    availableSlots: ["07:00", "08:00", "09:00", "19:00", "20:00", "21:00"],
+    imageKey: "trainer2",
+    certifications: ["CREF", "Jiu-Jitsu Black Belt", "Muay Thai Coach"],
+    totalClients: 298,
+  },
+  {
+    id: "t14",
+    gymId: "gym5",
+    name: "Paulo Henrique",
+    specialty: ["Corrida", "Triathlon", "Resistência"],
+    rating: 4.7,
+    reviewCount: 71,
+    pricePerHour: 155,
+    bio: "Maratonista e coach de corrida e triathlon. Ajudo atletas a quebrarem seus recordes pessoais e cruzarem finalizando mais fortes.",
+    experience: 8,
+    availableSlots: ["05:30", "06:00", "07:00", "17:00", "18:00"],
+    imageKey: "trainer1",
+    certifications: ["CREF", "IAAF Coaching", "Triathlon Coach"],
+    totalClients: 367,
+  },
+  {
+    id: "t15",
+    gymId: "gym5",
+    name: "Sofia Martins",
+    specialty: ["Dança", "Zumba", "Aeróbica"],
+    rating: 4.9,
+    reviewCount: 142,
+    pricePerHour: 150,
+    bio: "Professora de dança e personal trainer especializada em treinos que misturam alegria e resultado. Meu motto: treino bom é treino prazeroso!",
+    experience: 6,
+    availableSlots: ["08:00", "09:00", "10:00", "16:00", "17:00", "18:00"],
+    imageKey: "trainer2",
+    certifications: ["CREF", "Zumba Instructor", "Dança Esportiva"],
+    totalClients: 523,
+  },
+];
+
+export const MOCK_BOOKINGS: Booking[] = [
+  {
+    id: "b1",
+    trainerId: "t1",
+    trainerName: "Carlos Mendes",
+    gymName: "SmartFit Centro",
+    gymAddress: "Av. Paulista, 1374",
+    date: "2026-04-10",
+    time: "08:00",
+    type: "Hipertrofia",
+    price: 180,
+    status: "confirmed",
+    imageKey: "trainer1",
+  },
+  {
+    id: "b2",
+    trainerId: "t7",
+    trainerName: "Fernanda Lima",
+    gymName: "Bio Ritmo Paulista",
+    gymAddress: "Av. Brigadeiro Luís Antônio, 2391",
+    date: "2026-04-12",
+    time: "07:00",
+    type: "CrossFit",
+    price: 220,
+    status: "confirmed",
+    imageKey: "trainer2",
+  },
+  {
+    id: "b3",
+    trainerId: "t2",
+    trainerName: "Ana Paula Costa",
+    gymName: "SmartFit Centro",
+    gymAddress: "Av. Paulista, 1374",
+    date: "2026-04-05",
+    time: "10:00",
+    type: "Yoga",
+    price: 160,
+    status: "completed",
+    imageKey: "trainer2",
+  },
+];
+
+export const TRAINING_TYPES = [
+  "Musculação",
+  "Funcional",
+  "CrossFit",
+  "HIIT",
+  "Yoga",
+  "Pilates",
+  "Cardio",
+  "Emagrecimento",
+  "Hipertrofia",
+  "Corrida",
+  "Lutas",
+  "Reabilitação",
+];
+
+export const TRAINING_MODES = ["Presencial", "Online"];
