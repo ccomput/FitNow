@@ -1,0 +1,242 @@
+Quero expandir o protótipo mobile que já foi criado para meu aplicativo de personal trainer sob demanda.
+
+IMPORTANTE:
+- Manter o mesmo estilo visual já existente
+- Não refazer telas atuais, apenas complementar
+- Design clean, moderno e consistente
+- Protótipo navegável com dados mockados (sem backend real)
+
+CONTEXTO:
+O app permite que o aluno encontre personais disponíveis por localização, academia, data e horário.
+
+Fluxo já existente:
+- Escolher data, horário, modalidade e objetivo
+- Ver academias no mapa com número de personais disponíveis
+- Clicar na academia
+- Ver lista de personais
+- Ver perfil do personal
+- Confirmar reserva
+- Pagamento
+- Reserva confirmada
+- Meus agendamentos
+- Perfil básico do aluno
+
+AGORA PRECISO COMPLEMENTAR O MVP COM AS TELAS ABAIXO:
+
+--------------------------------------------------
+
+1) ÁREA DO ALUNO – FICHA COMPLETA
+
+Criar tela “Minha ficha” com:
+
+- Nome
+- Email
+- Telefone
+- Data de nascimento
+- Sexo
+- Altura
+- Peso
+- Objetivo
+- Nível de treino (iniciante/intermediário/avançado)
+- Frequência semanal
+- Restrições físicas
+- Lesões
+- Condições de saúde
+- Uso de medicação relevante
+- Observações
+- Contato de emergência
+
+Objetivos:
+- Emagrecimento
+- Hipertrofia
+- Condicionamento
+- Mobilidade
+- Reabilitação
+- Performance
+- Saúde geral
+
+--------------------------------------------------
+
+2) ONBOARDING DO ALUNO
+
+Fluxo em etapas:
+
+1. Boas-vindas
+2. Dados básicos
+3. Objetivo
+4. Dados físicos
+5. Saúde
+6. Conclusão
+
+--------------------------------------------------
+
+3) ÁREA “MEU TREINO”
+
+Tela com:
+- Nome do treino
+- Objetivo
+- Divisão
+- Exercícios
+- Observações
+- Última atualização
+- Personal responsável
+
+--------------------------------------------------
+
+4) EVOLUÇÃO DO ALUNO
+
+Tela com:
+- Peso
+- Gordura
+- Massa magra
+- Medidas
+- Histórico por data (pode ser gráfico simples)
+
+--------------------------------------------------
+
+5) ACESSO DO PERSONAL
+
+Criar login separado ou escolha de perfil:
+- Aluno
+- Personal
+
+--------------------------------------------------
+
+6) PERFIL DO PERSONAL (EDIÇÃO)
+
+Campos:
+- Foto
+- Nome
+- Bio
+- CREF
+- Especialidades
+- Experiência
+- Academias onde atende
+- Regiões
+- Preço por sessão
+- Modalidades (presencial/online)
+- Horários disponíveis
+- Certificações
+
+--------------------------------------------------
+
+7) AGENDA DO PERSONAL
+
+Funcionalidades:
+- Agenda do dia/semana
+- Adicionar horários disponíveis
+- Bloquear horários
+- Ver reservas
+- Ver horários livres
+
+--------------------------------------------------
+
+8) RESERVAS DO PERSONAL
+
+Mostrar:
+- Aluno
+- Academia
+- Horário
+- Objetivo
+- Status
+- Botão “ver ficha do aluno”
+- Botão “marcar como realizado”
+
+--------------------------------------------------
+
+9) FICHA DO ALUNO (VISÃO DO PERSONAL)
+
+Mostrar:
+- Nome
+- Idade
+- Altura
+- Peso
+- Objetivo
+- Nível
+- Restrições
+- Lesões
+- Observações
+- Treino atual
+- Histórico
+- Evolução
+
+--------------------------------------------------
+
+10) CRIAÇÃO/EDIÇÃO DE TREINO
+
+Campos:
+- Nome do treino
+- Foco
+- Exercícios
+- Séries
+- Repetições
+- Observações
+- Data de atualização
+
+--------------------------------------------------
+
+11) CHECK-IN DO TREINO
+
+Após sessão:
+- Marcar como realizado
+- Adicionar observação
+- Registrar percepção
+
+--------------------------------------------------
+
+12) AVALIAÇÕES
+
+- Nota do aluno
+- Comentário
+- Exibir no perfil do personal
+
+--------------------------------------------------
+
+13) NOTIFICAÇÕES
+
+Exemplos:
+- Reserva confirmada
+- Treino amanhã
+- Alteração de horário
+- Atualização de treino
+
+--------------------------------------------------
+
+14) NAVEGAÇÃO
+
+Aluno:
+- Mapa
+- Agendamentos
+- Meu treino
+- Perfil
+
+Personal:
+- Agenda
+- Reservas
+- Alunos
+- Perfil
+
+--------------------------------------------------
+
+15) REGRAS DE UX
+
+- Manter padrão visual atual
+- Aparência de app real
+- Dados mockados realistas
+- Navegação fluida
+- Não simplificar demais
+
+--------------------------------------------------
+
+16) NÃO PRECISA
+
+- Backend real
+- Pagamento real
+- GPS real
+- Banco de dados
+
+--------------------------------------------------
+
+OBJETIVO FINAL:
+
+Expandir o protótipo para cobrir completamente o MVP, incluindo fluxo completo do aluno e do personal, mantendo a qualidade visual atual.

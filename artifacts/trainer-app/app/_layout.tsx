@@ -23,14 +23,29 @@ const queryClient = new QueryClient();
 function RootLayoutNav() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="splash" options={{ headerShown: false }} />
-      <Stack.Screen name="filters" options={{ headerShown: false }} />
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="gym/[gymId]/trainers" options={{ headerShown: false }} />
-      <Stack.Screen name="trainer/[trainerId]" options={{ headerShown: false }} />
-      <Stack.Screen name="booking/confirm" options={{ headerShown: false }} />
-      <Stack.Screen name="booking/payment" options={{ headerShown: false }} />
-      <Stack.Screen name="booking/success" options={{ headerShown: false }} />
+      <Stack.Screen name="splash" />
+      <Stack.Screen name="profile-select" />
+      <Stack.Screen name="filters" />
+      <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="(personal-tabs)" />
+      <Stack.Screen name="onboarding/welcome" />
+      <Stack.Screen name="onboarding/basic" />
+      <Stack.Screen name="onboarding/goal" />
+      <Stack.Screen name="onboarding/physical" />
+      <Stack.Screen name="onboarding/health" />
+      <Stack.Screen name="onboarding/complete" />
+      <Stack.Screen name="student/ficha" />
+      <Stack.Screen name="student/evolution" />
+      <Stack.Screen name="student/notifications" />
+      <Stack.Screen name="checkin/[bookingId]" />
+      <Stack.Screen name="review/[bookingId]" />
+      <Stack.Screen name="personal/student-file/[studentId]" />
+      <Stack.Screen name="personal/workout-edit" />
+      <Stack.Screen name="gym/[gymId]/trainers" />
+      <Stack.Screen name="trainer/[trainerId]" />
+      <Stack.Screen name="booking/confirm" />
+      <Stack.Screen name="booking/payment" />
+      <Stack.Screen name="booking/success" />
     </Stack>
   );
 }

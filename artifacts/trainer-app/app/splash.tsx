@@ -48,7 +48,7 @@ export default function SplashScreen() {
       }),
     ]).start(() => {
       setTimeout(() => {
-        router.replace("/filters");
+        router.replace("/profile-select");
       }, 1400);
     });
   }, []);
