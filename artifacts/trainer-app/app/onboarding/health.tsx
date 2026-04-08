@@ -27,7 +27,7 @@ export default function OnboardingHealth() {
     setStudentProfile({
       ...studentProfile,
       restrictions, injuries, healthConditions, medications, observations,
-      emergencyContact, onboardingComplete: true,
+      emergencyContact,
     });
     router.push("/onboarding/workout");
   };
@@ -39,11 +39,11 @@ export default function OnboardingHealth() {
           <Feather name="arrow-left" size={20} color={colors.foreground} />
         </TouchableOpacity>
         <View style={styles.progressBar}>
-          {[1, 2, 3, 4, 5].map((i) => (
-            <View key={i} style={[styles.progressSeg, { backgroundColor: colors.primary }]} />
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <View key={i} style={[styles.progressSeg, { backgroundColor: i <= 5 ? colors.primary : colors.muted }]} />
           ))}
         </View>
-        <Text style={[styles.stepLabel, { color: colors.mutedForeground }]}>5 / 5</Text>
+        <Text style={[styles.stepLabel, { color: colors.mutedForeground }]}>5 / 6</Text>
       </View>
 
       <ScrollView contentContainerStyle={[styles.scroll, { paddingBottom: bottomPad + 100 }]}>
@@ -81,8 +81,8 @@ export default function OnboardingHealth() {
 
       <View style={[styles.footer, { backgroundColor: colors.background, borderTopColor: colors.border, paddingBottom: bottomPad + 12 }]}>
         <TouchableOpacity style={[styles.nextBtn, { backgroundColor: colors.primary }]} onPress={handleNext} activeOpacity={0.85}>
-          <Text style={styles.nextBtnText}>Concluir cadastro</Text>
-          <Feather name="check" size={18} color="#FFFFFF" />
+          <Text style={styles.nextBtnText}>Próximo</Text>
+          <Feather name="arrow-right" size={18} color="#FFFFFF" />
         </TouchableOpacity>
       </View>
     </View>

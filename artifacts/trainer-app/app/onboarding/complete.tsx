@@ -9,13 +9,14 @@ import { useApp } from "@/context/AppContext";
 export default function OnboardingComplete() {
   const colors = useColors();
   const insets = useSafeAreaInsets();
-  const { studentProfile } = useApp();
+  const { studentProfile, setStudentProfile } = useApp();
   const scale = useRef(new Animated.Value(0)).current;
   const opacity = useRef(new Animated.Value(0)).current;
   const topPad = Platform.OS === "web" ? 67 : insets.top;
   const bottomPad = Platform.OS === "web" ? 34 : insets.bottom;
 
   useEffect(() => {
+    setStudentProfile({ ...studentProfile, onboardingComplete: true });
     Animated.parallel([
       Animated.spring(scale, { toValue: 1, tension: 60, friction: 7, useNativeDriver: true }),
       Animated.timing(opacity, { toValue: 1, duration: 500, useNativeDriver: true }),

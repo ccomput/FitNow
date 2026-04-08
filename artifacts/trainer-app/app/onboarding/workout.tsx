@@ -59,7 +59,7 @@ export default function OnboardingWorkout() {
     } else if (choice === "no_workout" || choice === "wants_personal") {
       setWorkout(null);
     }
-    router.push("/onboarding/health");
+    router.push("/onboarding/complete");
   };
 
   const OPTIONS: { id: WorkoutChoice; icon: string; title: string; desc: string; color: string }[] = [
