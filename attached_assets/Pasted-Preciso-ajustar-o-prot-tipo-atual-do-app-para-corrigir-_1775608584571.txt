@@ -1,0 +1,230 @@
+Preciso ajustar o protótipo atual do app para corrigir a lógica e a UX da funcionalidade de treino do aluno.
+
+IMPORTANTE:
+- manter o design atual
+- não refazer a identidade visual
+- apenas ajustar a regra do produto e refletir isso nas telas
+- continuar como protótipo navegável com dados mockados
+- sem backend real
+
+CONTEXTO DO AJUSTE:
+Hoje o protótipo mostra o personal editando o treino do aluno, mas precisamos deixar mais claro como essa lógica funciona dentro do produto.
+
+A regra correta do app deve ser:
+
+1. O treino pertence ao ALUNO, não ao personal
+2. O aluno pode entrar no app já tendo um treino anterior
+3. O aluno pode cadastrar esse treino inicial no app
+4. Se o aluno não tiver treino, ele pode seguir sem treino inicial
+5. Depois que o aluno agenda com um personal, o personal pode:
+   - visualizar o treino atual do aluno
+   - ajustar o treino existente
+   - ou criar um novo treino para o aluno
+6. Sempre deve existir um “treino ativo” do aluno dentro da plataforma
+7. Esse treino ativo deve mostrar:
+   - origem do treino
+   - última atualização
+   - quem criou ou atualizou por último
+8. O app deve transmitir continuidade:
+   - se o aluno viajar ou trocar de personal, o novo personal consegue ver o treino atual e dar continuidade
+
+OBJETIVO:
+Quero ajustar o protótipo para refletir claramente esse modelo híbrido:
+- treino inicial pode ser informado pelo aluno
+- treino pode ser criado ou ajustado por um personal
+- o treino fica centralizado no perfil do aluno
+- outros personais conseguem visualizar e continuar a evolução
+
+--------------------------------------------------
+AJUSTES NECESSÁRIOS NAS TELAS
+--------------------------------------------------
+
+1) ONBOARDING DO ALUNO
+
+Adicionar uma etapa nova no onboarding com a pergunta:
+
+“Você já tem um treino atual?”
+
+Opções:
+- Sim, quero informar meu treino atual
+- Não, quero começar sem treino
+- Quero que um personal monte meu treino
+
+Se o aluno escolher “Sim”:
+mostrar um formulário simples para cadastrar o treino atual.
+
+Campos do treino inicial:
+- nome do treino
+- objetivo
+- divisão
+- lista básica de exercícios
+- observações
+
+Esse cadastro deve parecer simples, rápido e leve, sem complexidade excessiva.
+
+--------------------------------------------------
+
+2) TELA “MEU TREINO” DO ALUNO
+
+Ajustar a tela “Meu treino” para mostrar claramente:
+
+- nome do treino
+- objetivo
+- divisão
+- exercícios
+- observações
+- origem do treino
+- última atualização
+- atualizado por
+
+Exemplos de origem:
+- Informado pelo aluno
+- Criado por personal
+- Ajustado por personal
+
+Exemplo de “atualizado por”:
+- Você
+- Carlos Mendes
+- Diego Santos
+
+Adicionar também um botão ou ação visual:
+- Solicitar novo treino
+ou
+- Pedir ajuste ao personal
+
+A tela deve deixar claro que esse é o treino ATIVO do aluno na plataforma.
+
+--------------------------------------------------
+
+3) FICHA DO ALUNO (VISÃO DO PERSONAL)
+
+Na ficha do aluno, a seção de treino deve ficar mais clara.
+
+Mostrar:
+- Treino ativo
+- Origem do treino
+- Última atualização
+- Último responsável pela atualização
+
+Adicionar ações:
+- Visualizar treino
+- Ajustar treino
+- Criar novo treino para o aluno
+
+Se já existir treino:
+o botão principal pode ser “Ajustar treino”
+
+Se não existir treino:
+o botão principal pode ser “Criar treino”
+
+--------------------------------------------------
+
+4) TELA DE EDIÇÃO DE TREINO PELO PERSONAL
+
+Ajustar a tela de edição para deixar claro que o personal está editando o treino do ALUNO, e não criando algo isolado.
+
+Adicionar cabeçalho com algo como:
+- “Editar treino de Victor Santos”
+ou
+- “Treino ativo do aluno”
+
+Adicionar um pequeno resumo no topo:
+- nome do aluno
+- objetivo
+- nível
+- treino atual
+
+Ações possíveis:
+- salvar ajuste no treino atual
+- criar novo treino ativo para o aluno
+
+No protótipo, isso pode ser visual, com botões como:
+- Salvar alterações
+- Definir como treino ativo
+
+--------------------------------------------------
+
+5) NOVA TELA OU MODAL: ORIGEM E HISTÓRICO DO TREINO
+
+Criar uma visualização simples para mostrar histórico de versões do treino.
+
+Exemplo:
+- 02/04/2026 — treino informado pelo aluno
+- 07/04/2026 — ajustado por Carlos Mendes
+- 15/04/2026 — atualizado por Diego Santos
+
+Pode ser uma tela simples ou bottom sheet.
+
+Objetivo:
+deixar clara a continuidade do treino ao longo do tempo.
+
+--------------------------------------------------
+
+6) FLUXO DO ALUNO SEM TREINO
+
+Se o aluno não tiver treino, o protótipo deve refletir isso.
+
+Na tela “Meu treino”, mostrar um estado vazio com opções como:
+- Você ainda não possui um treino ativo
+- Agende com um personal para montar seu treino
+- ou informe um treino atual
+
+Adicionar botões:
+- Informar meu treino
+- Agendar personal
+
+--------------------------------------------------
+
+7) FLUXO DE SOLICITAÇÃO DE NOVO TREINO
+
+Criar uma ação simples no protótipo onde o aluno pode solicitar um novo treino.
+
+Pode ser um botão na tela “Meu treino” com opções:
+- Pedir ajuste do treino
+- Solicitar novo treino
+
+Essa ação pode abrir um modal simples com:
+- objetivo desejado
+- observação
+- selecionar personal recente
+
+Não precisa lógica real, apenas fluxo visual.
+
+--------------------------------------------------
+
+8) AJUSTES DE TEXTO / UX
+
+Revisar os textos nas telas para reforçar a lógica correta:
+
+Evitar dar a entender que:
+- o treino pertence ao personal
+- ou que cada personal cria um treino separado e desconectado
+
+Reforçar a ideia de:
+- treino do aluno
+- continuidade
+- evolução acompanhada
+- histórico centralizado
+
+--------------------------------------------------
+
+9) REGRAS DO PROTÓTIPO
+
+O protótipo deve refletir estas regras:
+- existe 1 treino ativo por aluno
+- pode haver histórico de versões
+- o aluno pode cadastrar um treino inicial
+- o personal pode editar ou substituir o treino ativo
+- o treino continua disponível para outros personais visualizarem
+
+--------------------------------------------------
+
+10) OBJETIVO FINAL DO AJUSTE
+
+Quero que o protótipo deixe muito claro que:
+- o treino é centralizado no aluno
+- a plataforma preserva a continuidade do treino
+- o personal atua como profissional que visualiza, ajusta ou cria treino
+- se o aluno trocar de personal ou viajar, o próximo personal consegue continuar o acompanhamento sem começar do zero
+
+Faça esse ajuste mantendo a mesma qualidade visual e consistência das telas atuais.

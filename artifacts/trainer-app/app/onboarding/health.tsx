@@ -29,7 +29,7 @@ export default function OnboardingHealth() {
       restrictions, injuries, healthConditions, medications, observations,
       emergencyContact, onboardingComplete: true,
     });
-    router.push("/onboarding/complete");
+    router.push("/onboarding/workout");
   };
 
   return (

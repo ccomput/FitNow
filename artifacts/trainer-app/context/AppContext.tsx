@@ -35,6 +35,13 @@ export interface WorkoutExercise {
   obs?: string;
 }
 
+export interface WorkoutHistoryEntry {
+  date: string;
+  action: string;
+  by: string;
+  byType: "student" | "personal";
+}
+
 export interface Workout {
   id: string;
   name: string;
@@ -43,7 +50,10 @@ export interface Workout {
   exercises: WorkoutExercise[];
   observations: string;
   updatedAt: string;
+  origin: "student" | "personal_created" | "personal_adjusted";
+  updatedBy: string;
   trainerName: string;
+  history: WorkoutHistoryEntry[];
 }
 
 export interface EvolutionEntry {
@@ -56,35 +66,6 @@ export interface EvolutionEntry {
   hips?: number;
   thigh?: number;
   arm?: number;
-}
-
-export interface MockStudent {
-  id: string;
-  name: string;
-  email: string;
-  age: number;
-  height: string;
-  weight: string;
-  goal: string;
-  level: string;
-  restrictions: string;
-  injuries: string;
-  observations: string;
-  lastSession: string;
-  totalSessions: number;
-  imageKey: "trainer1" | "trainer2" | "trainer3";
-}
-
-export interface PersonalBooking {
-  id: string;
-  studentId: string;
-  studentName: string;
-  gym: string;
-  date: string;
-  time: string;
-  goal: string;
-  status: "confirmed" | "pending" | "completed" | "cancelled";
-  imageKey: "trainer1" | "trainer2" | "trainer3";
 }
 
 export interface Notification {
@@ -151,8 +132,15 @@ const defaultWorkout: Workout = {
     { name: "Tríceps Pulley", sets: "3", reps: "12-15" },
   ],
   observations: "Descanso de 90s entre séries. Aumentar carga quando completar o topo das reps.",
-  updatedAt: "2026-04-02",
+  updatedAt: "2026-04-07",
+  origin: "personal_adjusted",
+  updatedBy: "Carlos Mendes",
   trainerName: "Carlos Mendes",
+  history: [
+    { date: "2026-01-15", action: "Treino informado pelo aluno", by: "Você", byType: "student" },
+    { date: "2026-02-20", action: "Ajuste de carga e volume", by: "Carlos Mendes", byType: "personal" },
+    { date: "2026-04-07", action: "Reestruturação com foco em hipertrofia", by: "Carlos Mendes", byType: "personal" },
+  ],
 };
 
 const defaultEvolution: EvolutionEntry[] = [
@@ -164,44 +152,34 @@ const defaultEvolution: EvolutionEntry[] = [
 
 const defaultNotifications: Notification[] = [
   {
-    id: "n1",
-    type: "booking",
+    id: "n1", type: "booking",
     title: "Reserva confirmada",
     body: "Seu treino com Carlos Mendes está confirmado para amanhã às 08:00.",
-    time: "há 5 min",
-    read: false,
+    time: "há 5 min", read: false,
   },
   {
-    id: "n2",
-    type: "reminder",
+    id: "n2", type: "reminder",
     title: "Treino amanhã!",
     body: "Não se esqueça: você tem treino com Fernanda Lima amanhã às 07:00 na Bio Ritmo.",
-    time: "há 2h",
-    read: false,
+    time: "há 2h", read: false,
   },
   {
-    id: "n3",
-    type: "update",
-    title: "Treino atualizado",
-    body: "Carlos Mendes atualizou seu treino de Hipertrofia. Confira as novidades.",
-    time: "ontem",
-    read: true,
+    id: "n3", type: "update",
+    title: "Seu treino foi atualizado",
+    body: "Carlos Mendes fez ajustes no seu treino de Hipertrofia. Confira as novidades.",
+    time: "ontem", read: true,
   },
   {
-    id: "n4",
-    type: "change",
+    id: "n4", type: "change",
     title: "Horário alterado",
     body: "Ana Paula Costa precisa remarcar sua sessão de quinta. Escolha um novo horário.",
-    time: "2 dias atrás",
-    read: true,
+    time: "2 dias atrás", read: true,
   },
   {
-    id: "n5",
-    type: "booking",
+    id: "n5", type: "booking",
     title: "Sessão concluída",
     body: "Parabéns! Sua sessão de CrossFit com Fernanda Lima foi marcada como concluída.",
-    time: "3 dias atrás",
-    read: true,
+    time: "3 dias atrás", read: true,
   },
 ];
 
