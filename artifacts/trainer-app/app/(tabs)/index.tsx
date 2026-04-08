@@ -121,6 +121,47 @@ export default function MapScreen() {
         </View>
       </View>
 
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.bannerStrip}
+        style={{ marginTop: topPad + 60, zIndex: 5 }}
+      >
+        <TouchableOpacity
+          style={[styles.assessmentBanner, { backgroundColor: colors.darkSurface }]}
+          onPress={() => router.push("/assessment/info")}
+          activeOpacity={0.85}
+        >
+          <View style={styles.assessmentBannerLeft}>
+            <View style={[styles.assessmentBannerBadge, { backgroundColor: "rgba(255,90,31,0.2)" }]}>
+              <Feather name="award" size={11} color="#FF5A1F" />
+              <Text style={styles.assessmentBannerBadgeText}>PRIMEIRO PASSO</Text>
+            </View>
+            <Text style={styles.assessmentBannerTitle}>Avaliação +{"\n"}Aula Inicial</Text>
+            <Text style={styles.assessmentBannerSub}>Anamnese, avaliação e treino personalizado</Text>
+          </View>
+          <View style={[styles.assessmentBannerBtn, { backgroundColor: "#FF5A1F" }]}>
+            <Text style={styles.assessmentBannerBtnText}>Agendar</Text>
+            <Feather name="arrow-right" size={13} color="#FFFFFF" />
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.reevalBanner, { backgroundColor: "#FFFBEB", borderColor: "#FED7AA" }]}
+          onPress={() => router.push("/assessment/reeval")}
+          activeOpacity={0.85}
+        >
+          <View style={[styles.reevalIcon, { backgroundColor: "#FEF3C7" }]}>
+            <Feather name="refresh-cw" size={20} color="#F59E0B" />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text style={[styles.reevalTitle, { color: "#92400E" }]}>Reavaliação próxima</Text>
+            <Text style={[styles.reevalSub, { color: "#B45309" }]}>Sugerida em julho · Mantenha seu progresso em dia</Text>
+          </View>
+          <Feather name="chevron-right" size={18} color="#F59E0B" />
+        </TouchableOpacity>
+      </ScrollView>
+
       {viewMode === "map" ? (
         <View style={styles.mapContainer}>
           <MapViewWrapper selectedGym={selectedGym} onGymPress={openSheet} />
@@ -485,4 +526,24 @@ const styles = StyleSheet.create({
     borderRadius: 14,
   },
   sheetCtaText: { color: "#FFFFFF", fontSize: 15, fontFamily: "Inter_600SemiBold" },
+  bannerStrip: { paddingHorizontal: 16, paddingVertical: 8, gap: 10 },
+  assessmentBanner: {
+    width: 220, borderRadius: 18, padding: 16,
+    shadowColor: "#000", shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.18, shadowRadius: 12, elevation: 6,
+  },
+  assessmentBannerLeft: { gap: 6, marginBottom: 14 },
+  assessmentBannerBadge: { flexDirection: "row", alignItems: "center", gap: 5, alignSelf: "flex-start", paddingHorizontal: 8, paddingVertical: 3, borderRadius: 20 },
+  assessmentBannerBadgeText: { fontSize: 9, fontFamily: "Inter_700Bold", color: "#FF5A1F", letterSpacing: 0.5 },
+  assessmentBannerTitle: { fontSize: 18, fontFamily: "Inter_700Bold", color: "#FFFFFF", lineHeight: 24 },
+  assessmentBannerSub: { fontSize: 11, fontFamily: "Inter_400Regular", color: "rgba(255,255,255,0.65)", lineHeight: 16 },
+  assessmentBannerBtn: { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6, paddingVertical: 10, borderRadius: 12 },
+  assessmentBannerBtnText: { color: "#FFFFFF", fontSize: 13, fontFamily: "Inter_600SemiBold" },
+  reevalBanner: {
+    width: 260, borderRadius: 18, padding: 16, borderWidth: 1,
+    flexDirection: "row", alignItems: "center", gap: 12,
+    shadowColor: "#F59E0B", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 8, elevation: 3,
+  },
+  reevalIcon: { width: 44, height: 44, borderRadius: 22, alignItems: "center", justifyContent: "center" },
+  reevalTitle: { fontSize: 13, fontFamily: "Inter_600SemiBold", marginBottom: 2 },
+  reevalSub: { fontSize: 11, fontFamily: "Inter_400Regular", lineHeight: 16 },
 });

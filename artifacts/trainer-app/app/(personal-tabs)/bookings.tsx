@@ -8,6 +8,14 @@ import { Feather } from "@expo/vector-icons";
 import { useColors } from "@/hooks/useColors";
 import { TrainerImage } from "@/components/TrainerImage";
 
+type SessionType = "regular" | "assessment" | "reeval";
+
+const SESSION_TYPE_CFG = {
+  regular: { label: "Aula avulsa", color: "#6B7280", bg: "#F3F4F6" },
+  assessment: { label: "Avaliação + Aula", color: "#FF5A1F", bg: "#FFF0EB" },
+  reeval: { label: "Reavaliação", color: "#10B981", bg: "#ECFDF5" },
+};
+
 const MOCK_PERSONAL_BOOKINGS = [
   {
     id: "pb1",
@@ -18,6 +26,7 @@ const MOCK_PERSONAL_BOOKINGS = [
     time: "07:00",
     goal: "Hipertrofia",
     status: "confirmed" as const,
+    sessionType: "regular" as SessionType,
     imageKey: "trainer1" as const,
   },
   {
@@ -29,6 +38,7 @@ const MOCK_PERSONAL_BOOKINGS = [
     time: "09:00",
     goal: "Emagrecimento",
     status: "confirmed" as const,
+    sessionType: "assessment" as SessionType,
     imageKey: "trainer2" as const,
   },
   {
@@ -40,6 +50,7 @@ const MOCK_PERSONAL_BOOKINGS = [
     time: "17:00",
     goal: "Musculação",
     status: "completed" as const,
+    sessionType: "regular" as SessionType,
     imageKey: "trainer3" as const,
   },
   {
@@ -51,6 +62,7 @@ const MOCK_PERSONAL_BOOKINGS = [
     time: "09:00",
     goal: "Pilates",
     status: "pending" as const,
+    sessionType: "reeval" as SessionType,
     imageKey: "trainer2" as const,
   },
   {
@@ -62,6 +74,7 @@ const MOCK_PERSONAL_BOOKINGS = [
     time: "06:00",
     goal: "HIIT",
     status: "completed" as const,
+    sessionType: "assessment" as SessionType,
     imageKey: "trainer1" as const,
   },
 ];
@@ -124,8 +137,9 @@ export default function PersonalBookingsScreen() {
         ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
         renderItem={({ item: b }) => {
           const st = STATUS_CFG[b.status];
+          const sType = SESSION_TYPE_CFG[b.sessionType];
           return (
-            <View style={[styles.bookingCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
+            <View style={[styles.bookingCard, { backgroundColor: colors.card, borderColor: b.sessionType === "assessment" ? "#FF5A1F" : colors.border, borderWidth: b.sessionType === "assessment" ? 1.5 : 1 }]}>
               <View style={styles.cardTop}>
                 <TrainerImage imageKey={b.imageKey} style={styles.photo} />
                 <View style={styles.cardInfo}>
@@ -134,6 +148,9 @@ export default function PersonalBookingsScreen() {
                     <View style={[styles.statusBadge, { backgroundColor: st.bg }]}>
                       <Text style={[styles.statusText, { color: st.color }]}>{st.label}</Text>
                     </View>
+                  </View>
+                  <View style={[styles.sessionTypePill, { backgroundColor: sType.bg }]}>
+                    <Text style={[styles.sessionTypePillText, { color: sType.color }]}>{sType.label}</Text>
                   </View>
                   <View style={styles.metaRow}>
                     <Feather name="map-pin" size={12} color={colors.mutedForeground} />
@@ -161,7 +178,16 @@ export default function PersonalBookingsScreen() {
                   <Text style={[styles.actionBtnText, { color: colors.foreground }]}>Ver ficha</Text>
                 </TouchableOpacity>
 
-                {b.status === "confirmed" && (
+                {b.status === "confirmed" && b.sessionType === "assessment" ? (
+                  <TouchableOpacity
+                    style={[styles.actionBtnPrimary, { backgroundColor: "#FF5A1F" }]}
+                    onPress={() => router.push(`/assessment/conduct?studentId=${b.studentId}&studentName=${encodeURIComponent(b.studentName)}`)}
+                    activeOpacity={0.8}
+                  >
+                    <Feather name="award" size={14} color="#FFFFFF" />
+                    <Text style={styles.actionBtnPrimaryText}>Iniciar avaliação</Text>
+                  </TouchableOpacity>
+                ) : b.status === "confirmed" ? (
                   <TouchableOpacity
                     style={[styles.actionBtnPrimary, { backgroundColor: "#10B981" }]}
                     onPress={() => router.push(`/checkin/${b.id}`)}
@@ -170,7 +196,7 @@ export default function PersonalBookingsScreen() {
                     <Feather name="check" size={14} color="#FFFFFF" />
                     <Text style={styles.actionBtnPrimaryText}>Marcar realizado</Text>
                   </TouchableOpacity>
-                )}
+                ) : null}
               </View>
             </View>
           );
@@ -201,6 +227,8 @@ const styles = StyleSheet.create({
   metaText: { fontSize: 12, fontFamily: "Inter_400Regular" },
   goalChip: { alignSelf: "flex-start", paddingHorizontal: 8, paddingVertical: 3, borderRadius: 20 },
   goalText: { fontSize: 11, fontFamily: "Inter_500Medium" },
+  sessionTypePill: { alignSelf: "flex-start", paddingHorizontal: 8, paddingVertical: 3, borderRadius: 20 },
+  sessionTypePillText: { fontSize: 10, fontFamily: "Inter_700Bold" },
   cardActions: {
     flexDirection: "row", gap: 10, paddingHorizontal: 14, paddingVertical: 12,
     borderTopWidth: StyleSheet.hairlineWidth,

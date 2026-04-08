@@ -15,20 +15,43 @@ import { TRAINERS, GYMS } from "@/data/mockData";
 import { TrainerImage } from "@/components/TrainerImage";
 import { useApp } from "@/context/AppContext";
 
+type SessionType = "regular" | "assessment" | "reeval";
+
+const SESSION_TYPES: { id: SessionType; label: string; shortLabel: string; desc: string; duration: number; icon: string; color: string; bg: string }[] = [
+  {
+    id: "regular", label: "Aula avulsa", shortLabel: "Aula", icon: "activity",
+    desc: "Treino baseado no seu plano atual",
+    duration: 60, color: "#6B7280", bg: "#F3F4F6",
+  },
+  {
+    id: "assessment", label: "Avaliação + Aula Inicial", shortLabel: "Avaliação", icon: "award",
+    desc: "Anamnese, avaliação e montagem do treino inicial",
+    duration: 90, color: "#FF5A1F", bg: "#FFF0EB",
+  },
+  {
+    id: "reeval", label: "Reavaliação", shortLabel: "Reavaliação", icon: "refresh-cw",
+    desc: "Atualização do progresso e ajuste do treino",
+    duration: 90, color: "#10B981", bg: "#ECFDF5",
+  },
+];
+
 export default function BookingConfirmScreen() {
   const colors = useColors();
   const insets = useSafeAreaInsets();
-  const { trainerId, gymId, slot } = useLocalSearchParams<{
+  const { trainerId, gymId, slot, sessionType: initialSessionType } = useLocalSearchParams<{
     trainerId: string;
     gymId: string;
     slot: string;
+    sessionType?: SessionType;
   }>();
   const { filters } = useApp();
 
   const trainer = TRAINERS.find((t) => t.id === trainerId);
   const gym = GYMS.find((g) => g.id === gymId);
 
-  const [selectedDuration, setSelectedDuration] = useState<60 | 90>(60);
+  const [sessionType, setSessionType] = useState<SessionType>(initialSessionType ?? "regular");
+  const selectedSession = SESSION_TYPES.find((s) => s.id === sessionType)!;
+  const [selectedDuration, setSelectedDuration] = useState<60 | 90>(selectedSession.duration as 60 | 90);
 
   const topPad = Platform.OS === "web" ? 67 : insets.top;
 
@@ -80,8 +103,49 @@ export default function BookingConfirmScreen() {
         </View>
 
         <View style={styles.detailsSection}>
+          <Text style={[styles.sectionTitle, { color: colors.foreground }]}>Tipo de sessão</Text>
+          <View style={styles.sessionTypeList}>
+            {SESSION_TYPES.map((s) => {
+              const isSelected = sessionType === s.id;
+              return (
+                <TouchableOpacity
+                  key={s.id}
+                  onPress={() => { setSessionType(s.id); setSelectedDuration(s.duration as 60 | 90); }}
+                  style={[
+                    styles.sessionTypeCard,
+                    {
+                      backgroundColor: isSelected ? s.bg : colors.card,
+                      borderColor: isSelected ? s.color : colors.border,
+                      borderWidth: isSelected ? 1.5 : 1,
+                    },
+                  ]}
+                  activeOpacity={0.7}
+                >
+                  <View style={[styles.sessionTypeIcon, { backgroundColor: isSelected ? s.color + "20" : colors.secondary }]}>
+                    <Feather name={s.icon as any} size={16} color={isSelected ? s.color : colors.mutedForeground} />
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <Text style={[styles.sessionTypeLabel, { color: isSelected ? s.color : colors.foreground }]}>{s.label}</Text>
+                    <Text style={[styles.sessionTypeDesc, { color: colors.mutedForeground }]}>{s.desc}</Text>
+                  </View>
+                  {isSelected && <Feather name="check-circle" size={16} color={s.color} />}
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+          {sessionType === "assessment" && (
+            <View style={[styles.assessmentNote, { backgroundColor: "#FFF0EB" }]}>
+              <Feather name="info" size={13} color="#FF5A1F" />
+              <Text style={[styles.assessmentNoteText, { color: "#C2410C" }]}>
+                A Avaliação + Aula Inicial dura 90 minutos e inclui anamnese, avaliação física e criação do seu treino inicial.
+              </Text>
+            </View>
+          )}
+        </View>
+
+        <View style={styles.detailsSection}>
           <Text style={[styles.sectionTitle, { color: colors.foreground }]}>
-            Detalhes do treino
+            Detalhes da sessão
           </Text>
 
           <View style={[styles.detailsCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
@@ -317,6 +381,13 @@ const styles = StyleSheet.create({
   summaryValue: { fontSize: 14, fontFamily: "Inter_500Medium" },
   summaryTotalLabel: { fontSize: 15, fontFamily: "Inter_600SemiBold" },
   summaryTotal: { fontSize: 20, fontFamily: "Inter_700Bold" },
+  sessionTypeList: { gap: 8 },
+  sessionTypeCard: { flexDirection: "row", alignItems: "center", gap: 12, padding: 12, borderRadius: 14 },
+  sessionTypeIcon: { width: 38, height: 38, borderRadius: 10, alignItems: "center", justifyContent: "center" },
+  sessionTypeLabel: { fontSize: 13, fontFamily: "Inter_600SemiBold" },
+  sessionTypeDesc: { fontSize: 11, fontFamily: "Inter_400Regular", marginTop: 1 },
+  assessmentNote: { flexDirection: "row", gap: 8, padding: 12, borderRadius: 10, alignItems: "flex-start", marginTop: 4 },
+  assessmentNoteText: { flex: 1, fontSize: 12, fontFamily: "Inter_400Regular", lineHeight: 18 },
   cancelPolicy: {
     flexDirection: "row",
     gap: 8,

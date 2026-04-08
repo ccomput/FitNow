@@ -1,0 +1,380 @@
+Quero expandir o protótipo atual do app de personal trainer sob demanda para adicionar a funcionalidade de AVALIAÇÃO + AULA INICIAL, mantendo o design, estilo visual, navegação e qualidade das telas já criadas.
+
+IMPORTANTE:
+- manter o mesmo design system atual
+- não refazer as telas existentes
+- apenas adicionar e integrar a nova funcionalidade ao protótipo atual
+- protótipo navegável com dados mockados realistas
+- sem backend real
+- sem integrações reais
+- foco total em UX e fluxo de produto
+
+==================================================
+CONTEXTO DA NOVA FUNCIONALIDADE
+==================================================
+
+O app já possui fluxo de:
+- busca de personal por mapa/academia
+- escolha de horário
+- perfil do personal
+- agendamento
+- pagamento
+- meus agendamentos
+- ficha do aluno
+- área do personal
+- treino do aluno
+
+Agora preciso adicionar a lógica de primeira sessão do aluno, que será uma sessão especial chamada:
+
+AVALIAÇÃO + AULA INICIAL
+
+Essa sessão deve existir para alunos que:
+- estão entrando pela primeira vez na plataforma
+- ainda não possuem avaliação válida
+- ainda não têm treino ativo bem definido
+- querem começar corretamente com um personal
+
+Nessa sessão, o personal:
+- faz uma anamnese
+- registra informações do aluno
+- faz avaliação inicial
+- monta o treino inicial
+- define recomendação de frequência/quantidade de treinos
+- deixa o aluno pronto para as próximas aulas normais
+
+Além disso, no futuro, o aluno poderá precisar fazer uma REAVALIAÇÃO, e o app deve mostrar alertas sobre isso.
+
+==================================================
+OBJETIVO DO AJUSTE
+==================================================
+
+Quero incorporar essa funcionalidade ao protótipo atual como um fluxo nativo do produto, não como landing externa.
+
+A nova funcionalidade deve mostrar que:
+
+- a primeira sessão do aluno pode ser uma Avaliação + Aula Inicial
+- essa sessão é diferente de uma aula normal
+- o personal registra anamnese e avaliação
+- o treino inicial nasce dessa sessão
+- o sistema guarda histórico
+- o app pode alertar sobre reavaliação futura
+- avaliação + aula e reavaliação são serviços cobrados dentro da plataforma
+
+==================================================
+TELAS E AJUSTES NECESSÁRIOS
+==================================================
+
+1) AJUSTE NO ONBOARDING DO ALUNO
+
+Adicionar no onboarding uma pergunta clara:
+
+“Você já possui avaliação física e treino atual?”
+
+Opções:
+- Sim, já tenho avaliação e treino
+- Tenho treino, mas quero uma nova avaliação
+- Não, quero começar com uma avaliação + aula inicial
+
+Se o aluno escolher a opção de nova avaliação ou primeira avaliação:
+o sistema deve direcionar visualmente para o fluxo de agendamento de Avaliação + Aula Inicial.
+
+--------------------------------------------------
+
+2) NOVO CARD / BANNER NO APP DO ALUNO
+
+Adicionar um card ou banner visual em destaque na home ou área principal do aluno com algo como:
+
+“Tire seu ponto de partida com uma Avaliação + Aula Inicial”
+
+Texto de apoio:
+“Na sua primeira sessão, o personal faz sua anamnese, registra seu perfil e monta seu treino inicial.”
+
+Botões:
+- Agendar avaliação + aula
+- Já tenho treino
+
+Esse card deve ser bonito, premium e coerente com o design atual.
+
+--------------------------------------------------
+
+3) NOVO TIPO DE SERVIÇO NA TELA DE AGENDAMENTO
+
+Na tela onde o aluno escolhe o tipo de sessão, adicionar novas opções:
+
+- Aula avulsa
+- Avaliação + Aula Inicial
+- Reavaliação
+
+A opção “Avaliação + Aula Inicial” deve ser destacada para novos alunos.
+
+Cada tipo de sessão pode mostrar uma pequena descrição:
+
+Aula avulsa:
+“Treino baseado no seu plano atual”
+
+Avaliação + Aula Inicial:
+“Anamnese, avaliação e montagem do treino inicial”
+
+Reavaliação:
+“Atualização do seu progresso e ajuste do treino”
+
+--------------------------------------------------
+
+4) TELA EXPLICATIVA DA AVALIAÇÃO + AULA
+
+Criar uma tela específica explicando esse serviço.
+
+Conteúdo sugerido:
+Título:
+“Avaliação + Aula Inicial”
+
+Subtítulo:
+“Comece com mais segurança, clareza e direcionamento”
+
+O que inclui:
+- Anamnese
+- Avaliação física inicial
+- Definição de objetivo
+- Análise de restrições
+- Criação do treino inicial
+- Recomendação de frequência
+
+Pode ter botão:
+- Agendar agora
+
+Essa tela deve ter aparência de produto premium e educacional.
+
+--------------------------------------------------
+
+5) AJUSTE NO FLUXO DE RESERVA
+
+Quando o aluno selecionar “Avaliação + Aula Inicial”, a reserva deve mostrar claramente:
+
+- Tipo de sessão: Avaliação + Aula Inicial
+- Duração sugerida maior do que uma aula comum
+- O que será feito
+- Valor da sessão
+- Personal escolhido
+- Academia / online
+- Data e horário
+
+Depois disso:
+- confirmação
+- pagamento
+- reserva criada normalmente
+
+--------------------------------------------------
+
+6) TELA DO PERSONAL PARA SESSÃO DE AVALIAÇÃO + AULA
+
+Criar uma tela especial para o personal quando a reserva for do tipo “Avaliação + Aula Inicial”.
+
+Essa tela deve permitir que o personal percorra etapas como:
+
+Etapa 1 — Anamnese
+- objetivo
+- rotina
+- experiência anterior
+- frequência disponível
+- preferências
+- histórico de treino
+
+Etapa 2 — Saúde / restrições
+- lesões
+- dores
+- condições relevantes
+- medicações
+- observações
+
+Etapa 3 — Avaliação física
+- peso
+- altura
+- medidas
+- percentual de gordura (mockado)
+- observações gerais
+
+Etapa 4 — Plano inicial
+- objetivo principal
+- frequência sugerida
+- quantidade recomendada de treinos por semana
+- observações
+
+Etapa 5 — Criação do treino inicial
+- nome do treino
+- divisão
+- exercícios
+- observações
+
+No protótipo, isso deve ser visual e navegável, sem necessidade de salvar em backend real.
+
+--------------------------------------------------
+
+7) TELA DE CONCLUSÃO DA AVALIAÇÃO PELO PERSONAL
+
+Após preencher a avaliação, criar uma tela de conclusão com algo como:
+
+“Avaliação concluída com sucesso”
+
+Mostrar:
+- nome do aluno
+- objetivo principal
+- frequência recomendada
+- treino inicial criado
+- data sugerida para reavaliação
+
+Botão:
+- Finalizar atendimento
+
+--------------------------------------------------
+
+8) AJUSTE NA FICHA DO ALUNO
+
+Adicionar novos blocos na ficha do aluno:
+
+- Avaliação inicial realizada em: [data]
+- Status da avaliação:
+  - Em dia
+  - Próxima da reavaliação
+  - Reavaliação recomendada
+  - Vencida
+- Próxima reavaliação sugerida em: [data]
+- Última anamnese registrada por: [nome do personal]
+
+Também adicionar um bloco:
+- Tipo de acompanhamento atual
+  - Com avaliação
+  - Sem avaliação
+  - Avaliação pendente
+
+--------------------------------------------------
+
+9) AJUSTE NA TELA “MEU TREINO”
+
+A tela “Meu treino” deve passar a mostrar também:
+
+- treino criado a partir da avaliação inicial
+- data da avaliação que originou o treino
+- personal responsável
+- status do treino
+
+Se o aluno ainda não tiver passado pela avaliação e não tiver treino:
+mostrar estado vazio com algo como:
+“Você ainda não possui treino ativo”
+“Agende sua avaliação + aula inicial para montar seu plano”
+
+Botões:
+- Agendar avaliação + aula
+- Informar treino atual
+
+--------------------------------------------------
+
+10) NOVA TELA OU CARD DE REAVALIAÇÃO
+
+Criar uma funcionalidade visual de alerta de reavaliação.
+
+Exemplo de card:
+“Está na hora de atualizar sua evolução”
+“Sua reavaliação está próxima”
+
+Botão:
+- Agendar reavaliação
+
+Também criar uma tela explicativa simples para a Reavaliação:
+- revisão de progresso
+- atualização do treino
+- ajuste de estratégia
+- nova recomendação
+
+--------------------------------------------------
+
+11) AJUSTE NAS RESERVAS E AGENDAMENTOS
+
+Nas telas de reservas do aluno e do personal, mostrar o tipo de sessão:
+
+- Aula avulsa
+- Avaliação + Aula Inicial
+- Reavaliação
+
+Visualmente, isso deve aparecer como badge/tag no card da reserva.
+
+--------------------------------------------------
+
+12) PERFIL DO PERSONAL
+
+Adicionar no perfil do personal informações sobre serviços oferecidos:
+
+- Faz Avaliação + Aula Inicial
+- Faz Reavaliação
+- Faz Aula avulsa
+- Atende presencial
+- Atende online
+
+Isso é importante porque nem todo personal precisa oferecer todos os tipos de sessão.
+
+--------------------------------------------------
+
+13) NOTIFICAÇÕES
+
+Adicionar notificações mockadas como:
+
+- Sua Avaliação + Aula está confirmada
+- Seu treino inicial foi criado
+- Sua reavaliação está próxima
+- Seu personal atualizou seu treino
+
+--------------------------------------------------
+
+14) REGRAS DE PRODUTO QUE O PROTÓTIPO DEVE REFLETIR
+
+O protótipo precisa deixar claras estas regras:
+
+- alunos novos podem começar com Avaliação + Aula Inicial
+- essa sessão é diferente de uma aula comum
+- o treino inicial pode nascer dessa sessão
+- o sistema registra avaliação, anamnese e treino
+- existe histórico
+- o app alerta quando a reavaliação estiver próxima
+- avaliação e reavaliação podem ser sessões cobradas na plataforma
+
+--------------------------------------------------
+
+15) EXPERIÊNCIA DO USUÁRIO
+
+A UX dessa funcionalidade deve transmitir:
+- cuidado
+- profissionalismo
+- segurança
+- acompanhamento real
+- continuidade
+
+Não quero que pareça apenas “mais uma aula”.
+Quero que fique claro que essa é uma etapa estratégica do acompanhamento do aluno.
+
+--------------------------------------------------
+
+16) O QUE NÃO PRECISA AGORA
+
+- backend real
+- cálculos reais
+- lógica médica real
+- integrações externas
+- persistência real
+
+Quero somente:
+- telas
+- fluxo navegável
+- UX clara
+- dados simulados
+
+--------------------------------------------------
+
+17) OBJETIVO FINAL
+
+Expandir o protótipo atual para incorporar completamente a funcionalidade de:
+- Avaliação + Aula Inicial
+- Registro de anamnese
+- Criação do treino inicial
+- Histórico e status da avaliação
+- Reavaliação futura com alertas
+
+Tudo isso mantendo a mesma qualidade visual e consistência do protótipo atual.

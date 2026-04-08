@@ -37,6 +37,10 @@ function RootLayoutNav() {
       <Stack.Screen name="onboarding/complete" />
       <Stack.Screen name="workout/history" />
       <Stack.Screen name="workout/register" />
+      <Stack.Screen name="assessment/info" />
+      <Stack.Screen name="assessment/conduct" />
+      <Stack.Screen name="assessment/complete" />
+      <Stack.Screen name="assessment/reeval" />
       <Stack.Screen name="student/ficha" />
       <Stack.Screen name="student/evolution" />
       <Stack.Screen name="student/notifications" />
