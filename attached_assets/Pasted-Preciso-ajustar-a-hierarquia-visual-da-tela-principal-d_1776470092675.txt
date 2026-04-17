@@ -1,0 +1,94 @@
+Preciso ajustar a hierarquia visual da tela principal do app.
+
+PROBLEMA ATUAL:
+A área de “Primeiro passo / Avaliação + Aula Inicial” e “Reavaliação” ficou grande demais e está roubando o foco da tela.
+
+A TELA PRINCIPAL DEVE TER COMO FOCO:
+- mapa
+- academias próximas
+- quantidade de personais disponíveis
+- descoberta rápida de opções
+
+Ou seja:
+o mapa deve ser o protagonista da tela.
+
+==================================================
+AJUSTE DE UX NECESSÁRIO
+==================================================
+
+Quero reorganizar essa tela para que:
+
+1. O mapa ocupe a maior parte da tela
+2. Os cards de “Avaliação + Aula Inicial” e “Reavaliação” virem elementos secundários
+3. A navegação do usuário seja centrada em encontrar academias e personais próximos
+4. A tela passe a sensação de descoberta/localização, não de campanha promocional
+
+==================================================
+COMO DEVE FICAR
+==================================================
+
+No topo:
+- manter barra com data, horário e filtros
+- manter botão de alterar
+- manter alternância mapa / lista
+
+Logo abaixo:
+- no máximo um pequeno card horizontal ou compacto de apoio
+- ou até um pequeno chip / banner discreto
+- sem ocupar grande altura da tela
+
+Exemplo de abordagem desejada:
+- card pequeno: “Primeira vez? Agende avaliação inicial”
+- card pequeno: “Reavaliação sugerida em julho”
+- ou usar carrossel pequeno e discreto
+- ou transformar isso em cards menores acima do mapa
+
+O mais importante:
+- o mapa deve aparecer logo e ocupar a maior parte da área visível
+- os pins das academias precisam ficar claramente visíveis
+- a sensação deve ser de um app de busca/localização
+
+==================================================
+REGRAS VISUAIS
+==================================================
+
+- reduzir drasticamente a altura dos cards de Avaliação + Aula Inicial e Reavaliação
+- evitar blocos altos
+- evitar que esses cards empurrem o mapa para baixo
+- manter essas mensagens como apoio secundário
+- o mapa precisa dominar a tela
+
+==================================================
+ALTERNATIVAS ACEITAS
+==================================================
+
+Pode escolher uma destas soluções visuais:
+
+OPÇÃO A:
+- transformar “Avaliação + Aula Inicial” em card horizontal compacto acima do mapa
+- transformar “Reavaliação” em um segundo card pequeno ou chip
+
+OPÇÃO B:
+- deixar apenas 1 banner compacto rotativo/carrossel com:
+  - avaliação inicial
+  - reavaliação
+
+OPÇÃO C:
+- mover essas informações para a tela de Agendamentos, Treino ou Perfil
+- e deixar na tela do mapa apenas um aviso muito discreto
+
+A melhor solução é a que deixar a tela principal mais limpa e centrada no mapa.
+
+==================================================
+OBJETIVO FINAL
+==================================================
+
+Quero que a tela principal do app seja claramente uma tela de:
+- busca
+- proximidade
+- descoberta de academias
+- disponibilidade de personais
+
+E não uma tela dominada por cards de avaliação ou reavaliação.
+
+Manter o design atual, mas corrigir a hierarquia visual para que o mapa volte a ser o protagonista.
