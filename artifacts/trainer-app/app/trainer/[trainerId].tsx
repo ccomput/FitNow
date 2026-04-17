@@ -107,12 +107,31 @@ export default function TrainerProfileScreen() {
 
         <View style={styles.body}>
           <View style={styles.priceRow}>
-            <Text style={[styles.priceLabel, { color: colors.mutedForeground }]}>
-              Por hora
-            </Text>
-            <Text style={[styles.priceValue, { color: colors.primary }]}>
-              R$ {trainer.pricePerHour}
-            </Text>
+            <View style={styles.priceLabelCol}>
+              <Text style={[styles.priceLabel, { color: colors.mutedForeground }]}>
+                A partir de
+              </Text>
+              <Text style={[styles.priceNote, { color: colors.mutedForeground }]}>
+                {trainer.priceNote}
+              </Text>
+            </View>
+            <View style={styles.priceRight}>
+              {trainer.isPremium && (
+                <View style={[styles.premiumBadge, { backgroundColor: "#FFF0EB" }]}>
+                  <Feather name="award" size={11} color="#FF5A1F" />
+                  <Text style={styles.premiumBadgeText}>Premium</Text>
+                </View>
+              )}
+              <Text style={[styles.priceValue, { color: colors.primary }]}>
+                R$ {trainer.pricePerHour}
+                <Text style={[styles.priceUnit, { color: colors.mutedForeground }]}>/h</Text>
+              </Text>
+              {trainer.displacementFee > 0 && (
+                <Text style={[styles.displacementNote, { color: colors.mutedForeground }]}>
+                  + R$ {trainer.displacementFee} deslocamento
+                </Text>
+              )}
+            </View>
           </View>
 
           <View style={[styles.section, { borderTopColor: colors.border }]}>
@@ -331,8 +350,15 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingVertical: 16,
   },
-  priceLabel: { fontSize: 14, fontFamily: "Inter_400Regular" },
+  priceLabelCol: { gap: 2 },
+  priceLabel: { fontSize: 12, fontFamily: "Inter_400Regular" },
+  priceNote: { fontSize: 11, fontFamily: "Inter_400Regular" },
+  priceRight: { alignItems: "flex-end", gap: 4 },
   priceValue: { fontSize: 24, fontFamily: "Inter_700Bold" },
+  priceUnit: { fontSize: 14, fontFamily: "Inter_400Regular" },
+  premiumBadge: { flexDirection: "row", alignItems: "center", gap: 4, paddingHorizontal: 8, paddingVertical: 4, borderRadius: 20 },
+  premiumBadgeText: { fontSize: 11, fontFamily: "Inter_600SemiBold", color: "#FF5A1F" },
+  displacementNote: { fontSize: 11, fontFamily: "Inter_400Regular" },
   section: {
     paddingVertical: 20,
     borderTopWidth: StyleSheet.hairlineWidth,

@@ -24,6 +24,9 @@ export interface Trainer {
   imageKey: "trainer1" | "trainer2" | "trainer3";
   certifications: string[];
   totalClients: number;
+  isPremium: boolean;
+  displacementFee: number;
+  priceNote: string;
 }
 
 export interface Booking {
@@ -113,6 +116,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer1",
     certifications: ["CREF", "CrossFit L2", "Nutrição Esportiva"],
     totalClients: 524,
+    isPremium: true,
+    displacementFee: 0,
+    priceNote: "Personal premium · alta demanda",
   },
   {
     id: "t2",
@@ -128,6 +134,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer2",
     certifications: ["CREF", "Yoga Alliance RYT-200", "Pilates Mat & Studio"],
     totalClients: 312,
+    isPremium: false,
+    displacementFee: 0,
+    priceNote: "Especialista em corpo e mente",
   },
   {
     id: "t3",
@@ -143,6 +152,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer3",
     certifications: ["CREF", "CrossFit L1", "Kettlebell"],
     totalClients: 198,
+    isPremium: false,
+    displacementFee: 0,
+    priceNote: "Ótimo custo-benefício",
   },
   {
     id: "t4",
@@ -158,6 +170,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer1",
     certifications: ["CREF", "Reabilitação Esportiva"],
     totalClients: 267,
+    isPremium: false,
+    displacementFee: 0,
+    priceNote: "Especialista em reabilitação",
   },
   {
     id: "t5",
@@ -173,6 +188,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer2",
     certifications: ["CREF", "Nutrição Esportiva", "Spinning Master"],
     totalClients: 678,
+    isPremium: true,
+    displacementFee: 0,
+    priceNote: "Personal premium certificada",
   },
   {
     id: "t6",
@@ -188,6 +206,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer3",
     certifications: ["CREF", "NSCA-CPT"],
     totalClients: 345,
+    isPremium: false,
+    displacementFee: 0,
+    priceNote: "Especialista em força",
   },
   {
     id: "t7",
@@ -203,6 +224,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer2",
     certifications: ["CREF", "CrossFit L3", "Olympic Weightlifting"],
     totalClients: 891,
+    isPremium: true,
+    displacementFee: 0,
+    priceNote: "Ex-atleta olímpica · Personal de elite",
   },
   {
     id: "t8",
@@ -218,6 +242,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer1",
     certifications: ["CREF", "IFBB Pro", "Nutrição Esportiva Avançada"],
     totalClients: 456,
+    isPremium: true,
+    displacementFee: 0,
+    priceNote: "IFBB Pro · Personal premium",
   },
   {
     id: "t9",
@@ -233,6 +260,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer2",
     certifications: ["CREF", "Yoga Alliance E-RYT 500", "Meditação Mindfulness"],
     totalClients: 389,
+    isPremium: false,
+    displacementFee: 0,
+    priceNote: "Formação internacional em Yoga",
   },
   {
     id: "t10",
@@ -248,6 +278,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer3",
     certifications: ["CREF", "Functional Training", "Mobilidade e Flexibilidade"],
     totalClients: 234,
+    isPremium: false,
+    displacementFee: 20,
+    priceNote: "Pode se deslocar até você",
   },
   {
     id: "t11",
@@ -263,6 +296,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer2",
     certifications: ["CREF", "Pilates Clínico", "Reeducação Postural"],
     totalClients: 412,
+    isPremium: false,
+    displacementFee: 0,
+    priceNote: "Especialista em Pilates clínico",
   },
   {
     id: "t12",
@@ -278,6 +314,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer3",
     certifications: ["CREF", "Nutrição Esportiva Básica"],
     totalClients: 145,
+    isPremium: false,
+    displacementFee: 0,
+    priceNote: "Iniciando na plataforma",
   },
   {
     id: "t13",
@@ -293,6 +332,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer2",
     certifications: ["CREF", "Jiu-Jitsu Black Belt", "Muay Thai Coach"],
     totalClients: 298,
+    isPremium: false,
+    displacementFee: 0,
+    priceNote: "Especialista em artes marciais",
   },
   {
     id: "t14",
@@ -308,6 +350,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer1",
     certifications: ["CREF", "IAAF Coaching", "Triathlon Coach"],
     totalClients: 367,
+    isPremium: false,
+    displacementFee: 25,
+    priceNote: "Inclui assessoria de corrida",
   },
   {
     id: "t15",
@@ -323,6 +368,9 @@ export const TRAINERS: Trainer[] = [
     imageKey: "trainer2",
     certifications: ["CREF", "Zumba Instructor", "Dança Esportiva"],
     totalClients: 523,
+    isPremium: true,
+    displacementFee: 0,
+    priceNote: "Top instrutora de Zumba · Premium",
   },
 ];
 

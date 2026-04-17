@@ -57,7 +57,12 @@ export default function BookingConfirmScreen() {
 
   if (!trainer || !gym) return null;
 
-  const totalPrice = Math.round((trainer.pricePerHour * selectedDuration) / 60);
+  const basePrice = Math.round((trainer.pricePerHour * selectedDuration) / 60);
+  const premiumAdjust = trainer.isPremium ? 20 : 0;
+  const displacementAdjust = trainer.displacementFee;
+  const sessionAdjust = sessionType === "assessment" ? 40 : sessionType === "reeval" ? 20 : 0;
+  const serviceFee = 9;
+  const totalPrice = basePrice + premiumAdjust + displacementAdjust + sessionAdjust + serviceFee;
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
@@ -86,9 +91,17 @@ export default function BookingConfirmScreen() {
         <View style={[styles.trainerCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
           <TrainerImage imageKey={trainer.imageKey} style={styles.trainerPhoto} />
           <View style={styles.trainerCardInfo}>
-            <Text style={[styles.trainerName, { color: colors.foreground }]}>
-              {trainer.name}
-            </Text>
+            <View style={styles.trainerNameRow}>
+              <Text style={[styles.trainerName, { color: colors.foreground }]}>
+                {trainer.name}
+              </Text>
+              {trainer.isPremium && (
+                <View style={styles.premiumBadge}>
+                  <Feather name="award" size={10} color="#FF5A1F" />
+                  <Text style={styles.premiumBadgeText}>Premium</Text>
+                </View>
+              )}
+            </View>
             <Text style={[styles.gymName, { color: colors.mutedForeground }]}>
               {gym.name}
             </Text>
@@ -99,6 +112,9 @@ export default function BookingConfirmScreen() {
                 ({trainer.reviewCount} avaliações)
               </Text>
             </View>
+            <Text style={[styles.priceNote, { color: colors.mutedForeground }]} numberOfLines={1}>
+              {trainer.priceNote}
+            </Text>
           </View>
         </View>
 
@@ -220,18 +236,57 @@ export default function BookingConfirmScreen() {
           <View style={[styles.summaryCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
             <View style={styles.summaryRow}>
               <Text style={[styles.summaryLabel, { color: colors.mutedForeground }]}>
-                Sessão ({selectedDuration} min)
+                Valor base ({selectedDuration} min)
               </Text>
               <Text style={[styles.summaryValue, { color: colors.foreground }]}>
-                R$ {totalPrice}
+                R$ {basePrice}
               </Text>
             </View>
+            {premiumAdjust > 0 && (
+              <View style={styles.summaryRow}>
+                <View style={styles.summaryLabelRow}>
+                  <Feather name="award" size={12} color="#FF5A1F" />
+                  <Text style={[styles.summaryLabel, { color: colors.mutedForeground }]}>
+                    Qualificação premium
+                  </Text>
+                </View>
+                <Text style={[styles.summaryValue, { color: "#FF5A1F" }]}>
+                  +R$ {premiumAdjust}
+                </Text>
+              </View>
+            )}
+            {displacementAdjust > 0 && (
+              <View style={styles.summaryRow}>
+                <View style={styles.summaryLabelRow}>
+                  <Feather name="map-pin" size={12} color="#6366F1" />
+                  <Text style={[styles.summaryLabel, { color: colors.mutedForeground }]}>
+                    Deslocamento do personal
+                  </Text>
+                </View>
+                <Text style={[styles.summaryValue, { color: "#6366F1" }]}>
+                  +R$ {displacementAdjust}
+                </Text>
+              </View>
+            )}
+            {sessionAdjust > 0 && (
+              <View style={styles.summaryRow}>
+                <View style={styles.summaryLabelRow}>
+                  <Feather name={sessionType === "assessment" ? "award" : "refresh-cw"} size={12} color={sessionType === "assessment" ? "#FF5A1F" : "#10B981"} />
+                  <Text style={[styles.summaryLabel, { color: colors.mutedForeground }]}>
+                    {sessionType === "assessment" ? "Avaliação + Aula inicial" : "Reavaliação"}
+                  </Text>
+                </View>
+                <Text style={[styles.summaryValue, { color: sessionType === "assessment" ? "#FF5A1F" : "#10B981" }]}>
+                  +R$ {sessionAdjust}
+                </Text>
+              </View>
+            )}
             <View style={styles.summaryRow}>
               <Text style={[styles.summaryLabel, { color: colors.mutedForeground }]}>
                 Taxa de serviço
               </Text>
               <Text style={[styles.summaryValue, { color: colors.foreground }]}>
-                R$ 9,90
+                R$ {serviceFee},90
               </Text>
             </View>
             <View style={[styles.divider, { backgroundColor: colors.border, marginVertical: 8 }]} />
@@ -240,7 +295,7 @@ export default function BookingConfirmScreen() {
                 Total
               </Text>
               <Text style={[styles.summaryTotal, { color: colors.primary }]}>
-                R$ {totalPrice + 9}
+                R$ {totalPrice}
               </Text>
             </View>
           </View>
@@ -281,7 +336,7 @@ export default function BookingConfirmScreen() {
           activeOpacity={0.85}
         >
           <Feather name="credit-card" size={18} color="#FFFFFF" />
-          <Text style={styles.payBtnText}>Ir para pagamento · R$ {totalPrice + 9}</Text>
+          <Text style={styles.payBtnText}>Ir para pagamento · R$ {totalPrice}</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -410,4 +465,9 @@ const styles = StyleSheet.create({
     borderRadius: 14,
   },
   payBtnText: { color: "#FFFFFF", fontSize: 15, fontFamily: "Inter_600SemiBold" },
+  trainerNameRow: { flexDirection: "row", alignItems: "center", gap: 8, flexWrap: "wrap" },
+  premiumBadge: { flexDirection: "row", alignItems: "center", gap: 3, backgroundColor: "#FFF0EB", paddingHorizontal: 7, paddingVertical: 3, borderRadius: 20 },
+  premiumBadgeText: { fontSize: 10, fontFamily: "Inter_600SemiBold", color: "#FF5A1F" },
+  priceNote: { fontSize: 11, fontFamily: "Inter_400Regular", marginTop: 2 },
+  summaryLabelRow: { flexDirection: "row", alignItems: "center", gap: 6 },
 });

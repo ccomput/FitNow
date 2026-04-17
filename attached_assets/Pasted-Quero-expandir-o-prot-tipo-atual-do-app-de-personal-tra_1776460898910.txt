@@ -1,0 +1,267 @@
+Quero expandir o protótipo atual do app de personal trainer sob demanda, mantendo o design, estilo visual, navegação e qualidade das telas já criadas, para incorporar funcionalidades que fazem sentido para o MVP.
+
+IMPORTANTE:
+- manter o mesmo design system atual
+- não refazer as telas existentes
+- apenas complementar e ajustar o protótipo atual
+- protótipo navegável com dados mockados realistas
+- sem backend real
+- sem integrações reais
+- foco total em UX e fluxo de produto
+- não adicionar funcionalidades avançadas demais fora do escopo do MVP
+
+==================================================
+OBJETIVO DESTE AJUSTE
+==================================================
+
+Quero incorporar ao protótipo apenas funcionalidades que fazem sentido para o MVP, com foco em:
+
+1. melhorar a experiência do aluno no treino
+2. reforçar a lógica de avaliação e continuidade
+3. deixar a precificação um pouco mais inteligente, mas sem complexidade excessiva
+
+NÃO quero neste momento:
+- análise corporal avançada por IA
+- geração automática de avatar corporal por foto
+- estimativa automática de gordura, massa magra ou medidas
+- funcionalidades futuristas fora do escopo do MVP
+
+==================================================
+FUNCIONALIDADES QUE DEVEM SER INCORPORADAS NO MVP
+==================================================
+
+1) VÍDEOS / GIFS DOS EXERCÍCIOS
+2) PREÇO COM LÓGICA BÁSICA DE AJUSTE
+3) REGISTRO VISUAL SIMPLES DE EVOLUÇÃO DO ALUNO (SEM IA)
+
+==================================================
+1) VÍDEOS / GIFS DOS EXERCÍCIOS
+==================================================
+
+A funcionalidade de treino do aluno já existe no protótipo. Agora quero enriquecer essa experiência.
+
+AJUSTES NECESSÁRIOS:
+
+Na tela “Meu treino” e na visualização detalhada do treino:
+- cada exercício deve poder exibir uma mídia ilustrativa
+- pode ser vídeo curto ou GIF
+- usar dados mockados
+- foco em visualização, não em reprodução real complexa
+
+Cada exercício deve mostrar:
+- nome do exercício
+- grupo muscular
+- séries
+- repetições
+- observação do personal
+- thumbnail de vídeo ou GIF
+- botão ou ação “ver execução”
+
+Ao clicar em “ver execução”:
+- abrir uma tela ou modal simples com:
+  - nome do exercício
+  - mídia ilustrativa em destaque
+  - instruções curtas
+  - erros comuns
+  - observações
+
+Objetivo:
+- deixar o treino mais didático
+- reforçar valor do app
+- ajudar o aluno a executar melhor os exercícios
+
+Manter visual premium, limpo e organizado.
+
+==================================================
+2) PREÇO COM LÓGICA BÁSICA DE AJUSTE
+==================================================
+
+Quero incorporar no protótipo uma lógica simples de precificação, sem transformar isso em algo complexo demais.
+
+A ideia é que o preço da sessão não seja totalmente fixo, mas também não seja uma lógica avançada demais.
+
+No protótipo, o preço deve ser formado por:
+- preço base do personal
+- possível ajuste por deslocamento
+- possível ajuste por qualificação ou avaliação
+- tipo de sessão
+
+Exemplo conceitual:
+- se o personal já estiver na academia: valor mais vantajoso
+- se o personal precisar se deslocar: valor maior
+- se o personal for mais qualificado / mais bem avaliado: pode custar um pouco mais
+- avaliação + aula inicial pode ter valor maior do que aula avulsa
+
+O que quero no protótipo:
+- mostrar isso de forma simples e clara ao usuário
+- sem fórmula complicada exposta
+- sem parecer confuso
+
+AJUSTES NECESSÁRIOS:
+
+Nos cards dos personais:
+- mostrar valor da sessão
+- opcionalmente mostrar uma informação curta como:
+  - “valor ajustado pela disponibilidade”
+  - “valor inclui deslocamento”
+  - “personal premium”
+
+Na tela de confirmação da reserva:
+- mostrar detalhamento simples do preço, como:
+  - valor base
+  - ajuste de deslocamento
+  - ajuste por tipo de sessão
+  - valor final
+
+Criar uma UX clara, elegante e fácil de entender.
+
+IMPORTANTE:
+- não criar um sistema muito sofisticado
+- apenas simular no protótipo uma lógica de preço semi-dinâmico
+- manter faixas realistas de valor
+
+==================================================
+3) REGISTRO VISUAL SIMPLES DE EVOLUÇÃO DO ALUNO
+==================================================
+
+Quero adicionar no MVP uma funcionalidade simples de acompanhamento visual da evolução do aluno, sem análise automática por IA.
+
+A ideia NÃO é fazer avaliação corporal automática.
+A ideia é apenas permitir registro visual e acompanhamento básico.
+
+AJUSTES NECESSÁRIOS:
+
+Na área de evolução do aluno, adicionar:
+- fotos de progresso
+- comparativo antes/depois
+- linha do tempo de registros
+- data de cada registro
+
+Pode ser mostrado como:
+- cards com foto
+- comparação lado a lado
+- histórico visual por mês
+- observações do personal
+
+Adicionar também:
+- legenda como “evolução registrada”
+- observação do personal
+- data do registro
+
+Objetivo:
+- dar sensação de progresso
+- enriquecer a experiência do aluno
+- criar valor sem depender de IA
+
+IMPORTANTE:
+- não prometer cálculo automático
+- não mostrar métricas falsas de composição corporal por imagem
+- o foco é somente registro visual simples da evolução
+
+==================================================
+AJUSTES NAS TELAS EXISTENTES
+==================================================
+
+Quero ajustar e complementar as telas atuais para incorporar essas funcionalidades de forma coerente.
+
+==================================================
+A) TELA “MEU TREINO”
+==================================================
+
+Ajustar para:
+- exibir exercícios com mídia ilustrativa
+- permitir abrir detalhe do exercício
+- manter clareza visual
+- mostrar treino mais completo e rico
+
+==================================================
+B) DETALHE DO EXERCÍCIO
+==================================================
+
+Criar nova tela ou modal com:
+- nome do exercício
+- vídeo curto ou GIF mockado
+- instruções
+- observações do personal
+- erros comuns
+- botão voltar
+
+==================================================
+C) PERFIL / CARD DO PERSONAL
+==================================================
+
+Ajustar para:
+- mostrar preço base ou valor da sessão
+- indicar quando há ajuste simples de valor
+- mostrar se é personal premium / maior qualificação
+- reforçar avaliação e experiência
+
+==================================================
+D) TELA DE CONFIRMAÇÃO DA RESERVA
+==================================================
+
+Ajustar para:
+- mostrar resumo do preço
+- valor base
+- ajuste por deslocamento, quando houver
+- ajuste por tipo de sessão
+- valor final
+
+==================================================
+E) TELA DE EVOLUÇÃO
+==================================================
+
+Ajustar para:
+- incluir fotos de evolução
+- comparativo visual
+- histórico cronológico
+- observações do personal
+
+==================================================
+REGRAS DE PRODUTO QUE O PROTÓTIPO DEVE REFLETIR
+==================================================
+
+O protótipo deve refletir claramente que:
+
+- o treino do aluno pode ser acompanhado de forma mais rica com vídeos/GIFs
+- a evolução do aluno pode ser registrada visualmente por fotos
+- o preço da sessão pode variar de forma simples conforme contexto
+- a experiência do app vai além do agendamento
+- o aluno percebe valor em acompanhamento, execução e evolução
+
+==================================================
+O QUE NÃO DEVE SER ADICIONADO AGORA
+==================================================
+
+Não adicionar neste momento:
+- análise corporal por IA
+- geração automática de avatar corporal
+- cálculo automático de gordura, massa magra ou medidas
+- leitura avançada de imagem
+- lógica de pricing complexa em excesso
+- algoritmos muito sofisticados de preço estilo Uber completo
+
+==================================================
+DIRETRIZES DE UX
+==================================================
+
+A experiência deve continuar transmitindo:
+- modernidade
+- clareza
+- premium
+- produto real
+- facilidade de uso
+
+Tudo deve parecer parte natural do app, sem criar excesso de telas ou complexidade desnecessária.
+
+==================================================
+OBJETIVO FINAL
+==================================================
+
+Expandir o protótipo atual incorporando apenas funcionalidades que fazem sentido para o MVP:
+
+- vídeos/GIFs nos exercícios
+- precificação semi-dinâmica simples
+- registro visual da evolução do aluno
+
+Tudo isso mantendo a consistência visual e a qualidade atual do protótipo.
