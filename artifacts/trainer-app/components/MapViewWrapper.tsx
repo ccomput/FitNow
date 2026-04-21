@@ -52,6 +52,9 @@ export function MapViewWrapper({ selectedGym, onGymPress }: Props) {
                 },
               ]}
             />
+            <View style={styles.nameLabel}>
+              <Text style={styles.nameLabelText} numberOfLines={1}>{gym.name}</Text>
+            </View>
           </View>
         </Marker>
       ))}
@@ -89,5 +92,23 @@ const styles = StyleSheet.create({
     borderLeftColor: "transparent",
     borderRightColor: "transparent",
     marginTop: -1,
+  },
+  nameLabel: {
+    backgroundColor: "rgba(255,255,255,0.93)",
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    borderRadius: 10,
+    marginTop: 5,
+    maxWidth: 120,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.15,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  nameLabelText: {
+    fontSize: 9,
+    fontFamily: "Inter_600SemiBold",
+    color: "#1A1A2E",
   },
 });

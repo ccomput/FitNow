@@ -59,19 +59,25 @@ export function MapViewWrapper({ selectedGym, onGymPress }: Props) {
         return (
           <TouchableOpacity
             key={gym.id}
-            style={[
-              styles.marker,
-              pos,
-              {
-                backgroundColor: isSelected ? colors.darkSurface : colors.primary,
-                borderColor: "#FFFFFF",
-                shadowColor: isSelected ? colors.darkSurface : colors.primary,
-              },
-            ]}
+            style={[styles.markerWrapper, pos]}
             onPress={() => onGymPress(gym)}
             activeOpacity={0.8}
           >
-            <Text style={styles.markerCount}>{gym.availableTrainers}</Text>
+            <View
+              style={[
+                styles.marker,
+                {
+                  backgroundColor: isSelected ? colors.darkSurface : colors.primary,
+                  borderColor: "#FFFFFF",
+                  shadowColor: isSelected ? colors.darkSurface : colors.primary,
+                },
+              ]}
+            >
+              <Text style={styles.markerCount}>{gym.availableTrainers}</Text>
+            </View>
+            <View style={styles.nameLabel}>
+              <Text style={styles.nameLabelText} numberOfLines={1}>{gym.name}</Text>
+            </View>
           </TouchableOpacity>
         );
       })}
@@ -145,26 +151,47 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontFamily: "Inter_500Medium",
   },
-  marker: {
+  markerWrapper: {
     position: "absolute",
+    alignItems: "center",
+    marginLeft: -22,
+    marginTop: -22,
+    zIndex: 5,
+  },
+  marker: {
     width: 44,
     height: 44,
     borderRadius: 22,
     borderWidth: 3,
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: -22,
-    marginTop: -22,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 8,
-    zIndex: 5,
   },
   markerCount: {
     color: "#FFFFFF",
     fontSize: 16,
     fontFamily: "Inter_700Bold",
+  },
+  nameLabel: {
+    backgroundColor: "rgba(255,255,255,0.93)",
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    borderRadius: 10,
+    marginTop: 5,
+    maxWidth: 120,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.12,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  nameLabelText: {
+    fontSize: 9,
+    fontFamily: "Inter_600SemiBold",
+    color: "#1A1A2E",
   },
   legend: {
     position: "absolute",
